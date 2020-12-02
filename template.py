@@ -46,6 +46,7 @@ def parse_line(line):
     line = line.split()
     #line = re.findall(r'\d+', line)
     #line = re.findall(r'[-+]?\d+', line)
+    #x, y, z = re.match(r"<(.*), (.*), (.*)>", line).group(1, 2, 3)
     line = [parse_token(x) for x in line]
 
     # One token per line

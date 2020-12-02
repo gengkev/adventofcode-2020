@@ -48,12 +48,15 @@ def main(A):
 
 
 def parse_line(line):
-    line = line.split()
-    start, end = line[0].split('-')
+    #line = line.split()
+    #start, end = line[0].split('-')
+    #start = int(start)
+    #end = int(end)
+    #c = line[1][0]
+    #pwd = line[2]
+    start, end, c, pwd = re.match(r"(\d+)-(\d+) ([a-z]): ([a-z]*)", line).group(1, 2, 3, 4)
     start = int(start)
     end = int(end)
-    c = line[1][0]
-    pwd = line[2]
     return (start, end, c, pwd)
 
 
