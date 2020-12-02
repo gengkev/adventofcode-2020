@@ -12,7 +12,7 @@ flatten = itertools.chain.from_iterable
 
 is_sample = False
 DAY = # TODO: change me
-YEAR = 2019
+YEAR = 2020
 
 
 ##########################################################################
