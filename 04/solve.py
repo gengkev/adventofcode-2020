@@ -26,7 +26,7 @@ def validate_field(k, v):
     if k == 'eyr':
         return len(v) == 4 and 2020 <= int(v) <= 2030
     if k == 'hgt':
-        m = re.match(r'(\d+)(cm|in)', v)
+        m = re.fullmatch(r'(\d+)(cm|in)', v)
         if m is None:
             return False
         num, unit = m.group(1, 2)
@@ -36,14 +36,12 @@ def validate_field(k, v):
             return 59 <= int(num) <= 76
         assert False
     if k == 'hcl':
-        if v[0] != '#':
-            return False
-        m = re.match(r'#([0-9a-fA-F]{6})', v)
+        m = re.fullmatch(r'#([0-9a-fA-F]{6})', v)
         return m is not None
     if k == 'ecl':
         return v in ['amb','blu','brn','gry','grn','hzl','oth']
     if k == 'pid':
-        m = re.match(r'[0-9]{9}$', v)
+        m = re.fullmatch(r'[0-9]{9}', v)
         return m is not None
     if k == 'cid':
         return True
@@ -86,7 +84,6 @@ def main(A):
             cur_passport[k] = v
 
     passports.append(cur_passport)
-    print(len(passports))
 
     # Solve part 1
     def part1():
@@ -105,9 +102,8 @@ def main(A):
         for p in passports:
             if validate_passport(p):
                 cnt += 1
-                #print('valid', [v for k, v in sorted(p.items()) if k != 'cid'])
-                print(' '.join(f'{k}:{v}' for k, v in sorted(p.items())))
-                print()
+                #print(' '.join(f'{k}:{v}' for k, v in sorted(p.items())))
+                #print()
 
         return cnt
 
@@ -121,7 +117,7 @@ def parse_line(line):
     line = line.split()
     #line = re.findall(r'\d+', line)
     #line = re.findall(r'[-+]?\d+', line)
-    #x, y, z = re.match(r"<(.*), (.*), (.*)>", line).group(1, 2, 3)
+    #m = re.fullmatch(r"<(.*), (.*), (.*)>", line)
 
     return line
 
