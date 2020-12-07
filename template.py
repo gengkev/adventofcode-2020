@@ -43,14 +43,14 @@ def parse_token(x):
 
 
 def parse_line(line):
-    line = line.split()
+    #line = line.split()
     #line = re.findall(r'\d+', line)
     #line = re.findall(r'[-+]?\d+', line)
     #m = re.fullmatch(r"<(.*), (.*), (.*)>", line)
-    line = [parse_token(x) for x in line]
+    #line = [parse_token(x) for x in line]
 
     # One token per line
-    line = line[0]
+    #line = line[0]
 
     return line
 
