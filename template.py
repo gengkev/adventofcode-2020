@@ -15,6 +15,43 @@ DAY = # TODO: change me
 YEAR = 2020
 
 
+DIRS = {
+    0: (1, 0),
+    1: (0, 1),
+    2: (-1, 0),
+    3: (0, -1),
+}
+
+DDIRS = {
+    0: (1, 0),
+    1: (1, 1),
+    2: (0, 1),
+    3: (-1, 1),
+    4: (-1, 0),
+    5: (-1, -1),
+    6: (0, -1),
+    7: (1, -1),
+}
+
+def bfs(graph, start):
+    visited = set()
+    order = []
+    q = deque([start])
+
+    while q:
+        cur = q.popleft()
+
+        if cur in visited:
+            continue
+        visited.add(cur)
+        order.append(cur)
+
+        for nbr in graph[cur]:
+            q.append(nbr)
+
+    return order
+
+
 ##########################################################################
 
 
