@@ -60,18 +60,16 @@ def check_range(value, rnge):
     return s <= value <= e
 
 def main(A):
-    valid_tickets = []
+    field_list, your_ticket, nearby_tickets = A
+
+    def check_all_ranges(value):
+        for field_name, r1, r2 in field_list:
+            if check_range(value, r1) or check_range(value, r2):
+                return True
+        return False
 
     # Solve part 1
     def part1():
-        field_list, _, nearby_tickets = A
-
-        def check_all_ranges(value):
-            for field_name, r1, r2 in field_list:
-                if check_range(value, r1) or check_range(value, r2):
-                    return True
-            return False
-
         invalid_values = []
         for ticket in nearby_tickets:
             for idx, value in enumerate(ticket):
@@ -85,15 +83,6 @@ def main(A):
 
     # Solve part 2
     def part2():
-        field_list, your_ticket, nearby_tickets = A
-        #print('field_list', field_list)
-
-        def check_all_ranges(value):
-            for field_name, r1, r2 in field_list:
-                if check_range(value, r1) or check_range(value, r2):
-                    return True
-            return False
-
         valid_tickets = []
         for ticket in nearby_tickets:
             valid = True
