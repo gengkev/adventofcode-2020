@@ -113,7 +113,8 @@ def main(A):
                 memo_item = (tuple(p1_cards), tuple(p2_cards))
                 if memo_item in memo_cards:
                     #print(' ==> repeating, oh no')
-                    winner = 'p1'
+                    # win the GAME
+                    return ('p1', p1_cards)
                 else:
                     memo_cards.add(memo_item)
 
@@ -163,7 +164,7 @@ def main(A):
         p1_cards, p2_cards = A
         p1_cards = p1_cards[:]
         p2_cards = p2_cards[:]
-        _, win_cards = play_game(*A)
+        _, win_cards = play_game(p1_cards, p2_cards)
         score = compute_score(win_cards)
         return score
 
