@@ -79,7 +79,6 @@ def main(A):
     # Solve part 2
     def part2():
         grid = dict(orig_grid)
-        print(sum(grid.values()))
         next_grid = dict()
 
         # add nbrs of all existing tiles
