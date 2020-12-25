@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import copy
+import operator
 import re
 import sys
 from collections import Counter, defaultdict, deque
@@ -32,6 +34,12 @@ DDIRS = {
     6: (0, -1),
     7: (1, -1),
 }
+
+def vec_add(*args):
+    return tuple(map(sum, zip(*args)))
+
+def vec_mul(vec, k):
+    return tuple(map(lambda x: x * k, vec))
 
 def bfs(graph, start):
     visited = set()
